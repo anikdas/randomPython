@@ -2,11 +2,13 @@
 
 import urllib2
 
-for x in xrange(1,10):
+for x in xrange(1,1302):
+	if x==404:
+		x+=1
 	#url = raw_input('Enter URL:\n')
 	url = "http://xkcd.com/" + str(x) + "/";
 	#retrieves the web page containing the image
-	f = urllib2.urlopen(url)
+	f = urllib2.urlopen(url) #urllib.urlopen(url) , alternatively for urllib.py library
 	txt = f.read();
 	#fetches the title of the xkcd title from the page
 	title_pos1 = txt.find(b'<title>')
