@@ -1,8 +1,9 @@
 #!usr/bin/python
 
 import urllib2
+import string
 
-for x in xrange(1,10):
+for x in xrange(58,101):
 	#url = raw_input('Enter URL:\n')
 	url = "http://xkcd.com/" + str(x) + "/";
 	#retrieves the web page containing the image
@@ -29,8 +30,11 @@ for x in xrange(1,10):
 	#print (link)
 	#downloading video file using urllib2
 	f = urllib2.urlopen(link)
-	file_name = (str(x)+ " . " +title +'.PNG')
-	print ("downloading " + file_name)
+	file_name = title
+	for c in string.punctuation:
+		file_name = file_name.replace(c,"")
+	file_name = file_name + ".PNG"
+	print ("downloading ::"+ str(x)+ " :: " + file_name)
 	# Open our local file for writing
 	local_file = open('./comics/'+file_name, "w" + 'b')
 	#Write to our local file
