@@ -1,17 +1,5 @@
 #!usr/bin/python
 
-"""
-##########################
-Written by Anik Das
-27th Septermber 2013
-##############################
-facebook video downloader#####
-##################################################################################################
-this program downloads facebook videos in mp4 format (which is default format for facebook videos)
-from a given link to that video page. Make sure the video is public. Other wise the page will not
-be accessable. The video is stored to the same directory as the python script is stored
-##################################################################################################
-"""
 import urllib2
 
 for x in xrange(1,10):
