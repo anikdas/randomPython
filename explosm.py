@@ -3,7 +3,7 @@
 import urllib2
 import string
 
-for x in xrange(404,405):
+for x in xrange(167,3684):
 	#url = raw_input('Enter URL:\n')
 	url = "http://explosm.net/comics/" + str(x) + "/";
 	#retrieves the web page containing the image
@@ -35,10 +35,15 @@ for x in xrange(404,405):
 	if (file_name == "" or link == "/comics/play-button.png"):
 		continue
 	#downloading image file using urllib2
-	f = urllib2.urlopen(link)
+	try:
+		f = urllib2.urlopen(link)
+	except urllib2.HTTPError, e:
+		if (e.code == 404 | e.code == 403):
+			print("Escaping " + x)
+			continue
 	print ("downloading ::"+ str(x)+ " :: " + file_name)
 	# Open our local file for writing
-	local_file = open('./comics/explosm/'+file_name, "w" + 'b')
+	local_file = open('./comics/explosm2/'+str(x)+'_'+file_name, "w" + 'b')
 	#Write to our local file
 	local_file.write(f.read())
 	local_file.close()

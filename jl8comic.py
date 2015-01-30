@@ -8,7 +8,7 @@ def downloadfn(link):
 	file_name = link[file_name_startpos+1:]
 	try:
 		f = urllib2.urlopen(link)
-	except urllib2.URLError, e:
+	except urllib2.HTTPError, e:
 		if e.code==404:
 			return 404
 	else:
@@ -19,7 +19,7 @@ def downloadfn(link):
 		local_file.write(f.read())
 		local_file.close()
 
-for x in xrange(1,150):
+for x in xrange(183,184):
 	link = 	'http://limbero.org/jl8/comics/' + str(x) + '.jpeg'
 	#downloading image file using urllib2
 	if downloadfn(link) == 404:
